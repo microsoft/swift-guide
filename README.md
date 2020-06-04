@@ -1,17 +1,20 @@
+# Introduction
 
-# Contributing
+The Swift coding conventions guide documents many best practices for writing Swift. Guidance here comes from a combination of our collective practical experiences and documentation from Apple. This is meant to be a living document and all contents are perpetually open for debate and improvement. For details on how to contribute, see the [contribution guidelines](CONTRIBUTING.md).
 
-This project welcomes contributions and suggestions.  Most contributions require you to agree to a
-Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us
-the rights to use your contribution. For details, visit https://cla.opensource.microsoft.com.
+## Resources 
 
-When you submit a pull request, a CLA bot will automatically determine whether you need to provide
-a CLA and decorate the PR appropriately (e.g., status check, comment). Simply follow the instructions
-provided by the bot. You will only need to do this once across all repos using our CLA.
+- [Swift official language guide](https://docs.swift.org/swift-book/LanguageGuide/TheBasics.html).
 
-This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
-For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
-contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
+# Table of Contents
+
+* [Delegates](Delegates.md)
+* [Early Return](EarlyReturn.md)
+* [File Content Ordering](FileContentOrdering.md)
+* [Immutability](Immutability.md)
+* [Naming](Naming.md)
+* [Property Observers](PropertyObservers.md)
+* [Type Inference](TypeInference.md)
 
 # Legal Notices
 
