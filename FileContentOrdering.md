@@ -10,7 +10,7 @@ Ordering file contents by access level ensures that the entities with the least 
 
 ## Example
 
-```Swift
+```swift
 // public enums, classes, interfaces etc.
 public class House {
 

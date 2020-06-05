@@ -5,7 +5,7 @@
 It's recommended to use `guard ... else` statements and early exits on top of a function to validate parameters or other variables.
 
 ## Syntax
-``` Swift
+``` swift
 func someFunction(argumentLabel parameterName: parameterType) {
     guard condition else {
         // log error or other actions
@@ -23,7 +23,7 @@ Using a guard statement to return early prevents parentheses nesting and better 
 
 ### Good: with early return, return value is a constant
 
-```Swift
+```swift
 class ElementList {
 
     func index(of element: Element) -> Int? {
@@ -49,7 +49,7 @@ class ElementList {
 
 ### Bad: without early return, return value is a variable
 
-```Swift
+```swift
 class ElementList {
 
     func index(of element: Element) -> Int? {

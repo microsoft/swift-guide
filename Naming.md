@@ -13,8 +13,7 @@ There's no three-letter prefix in Swift file naming. For example, if an Objectiv
 Provide a pre-fixed Objective-C name before the class or protocol definition. 
 
 #### Example
-``` Swift
-
+``` swift
 @objc class Event {
     // bad: exported to Objective-C as class Event without a prefix
 }
@@ -34,8 +33,7 @@ There is no need to add a prefix to a Swift protocol in order to distinguish it 
 - Protocols that describe a capability should be named using the suffixes able, ible, or ing (e.g. Equatable, ProgressReporting)."
 
 #### Example
-``` Swift
-
+``` swift
 protocol IFooEventHandler {
     // bad: the "I" prefix is not necessary
 }

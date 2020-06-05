@@ -14,7 +14,7 @@ The Swift compiler enforces that the constants will not be changed unexpectedly 
 
 #### Good: the constant preserves immutability
 
-```Swift
+```swift
 func spacing(for orientation: NSUserInterfaceLayoutOrientation) -> Int {
     let spacing = orientation = .horizontal ? 25 : 15
     return spacing
@@ -23,7 +23,7 @@ func spacing(for orientation: NSUserInterfaceLayoutOrientation) -> Int {
 
 #### Bad: unnecessary use of variable does not preserve immutability
 
-```Swift
+```swift
 func spacing(for orientation: NSUserInterfaceLayoutOrientation) -> Int {
     var spacing: Int
     if orientation = .horizontal {
@@ -39,7 +39,7 @@ func spacing(for orientation: NSUserInterfaceLayoutOrientation) -> Int {
 
 #### Good: use a closure to calculate the value of the constant
 
-```Swift
+```swift
 enum Direction {
 	case north, south, east, west
 }
@@ -66,7 +66,7 @@ func move(point: (Int, Int), towards direction: Direction) {
 
 #### Bad: unnecessary use of variable does not preserve immutability
 
-```Swift
+```swift
 enum Direction {
 	case north, south, east, west
 }

@@ -14,8 +14,7 @@ Delegates augment existing behavior in the delegating object, they don't provide
 Provide an extension with default implementations after the protocol definition. This is preferred because the conforming types don't have to be Objective-C compatible.
 
 #### Example
-``` Swift
-
+``` swift
 protocol DiceGameDelegate {
 
     func gameShouldStart(_ game: DiceGame)
@@ -42,7 +41,7 @@ extension DiceGameDelegate {
 Define all the methods as optional. This can only be done if the protocol is available from Objective-C (has the `@objc` attribute). All conforming types will need to be Objective-C compatible.
 
 #### Example
-``` Swift
+``` swift
 @objc protocol DiceGameDelegate {
 
     @objc optional func gameShouldStart(_ game: DiceGame)
