@@ -14,7 +14,7 @@ Checking whether the property value has actually changed can help avoid potentia
 
 ### Good: with `guard` statement, avoid doing unnecessary work
 
-``` Swift
+``` swift
 var propWithAnObserver: Bool {
     didSet {
         guard oldValue != propWithAnObserver else {
@@ -28,7 +28,7 @@ var propWithAnObserver: Bool {
 
 ### Bad: without `guard` statement, do unnecessary work
 
-``` Swift
+``` swift
 var propWithAnObserver: Bool {
     didSet {
         expensiveWork(propWithAnObserver)
@@ -45,7 +45,7 @@ Since the property assignment happens after the initializer with the use of `def
 
 ### Good: Avoid unnecessary duplicate calls to announceSymbol()
 
-``` Swift
+``` swift
 class House {
     init(symbol: String?) {
         defer {
@@ -66,7 +66,7 @@ class House {
 
 ### Bad: Unnecessary duplicate calls to announceSymbol()
 
-``` Swift
+``` swift
 class House {
     init(symbol: String?) {
         self.symbol = symbol

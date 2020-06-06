@@ -16,7 +16,7 @@ When assigning an enum or a static property to a variable or a constant, if the 
 
 #### Good: use shorthand dot syntax
 
-``` Swift
+``` swift
 func layout(with direction: NSUserInterfaceLayoutOrientation) {
     switch direction {
     case .horizontal:
@@ -30,7 +30,7 @@ func layout(with direction: NSUserInterfaceLayoutOrientation) {
 
 #### Bad: unnecessarily verbose without shorthand dot syntax
 
-``` Swift
+``` swift
 func layout(with direction: NSUserInterfaceLayoutOrientation) {
     switch direction {
     case NSUserInterfaceLayoutOrientation.horizontal:
@@ -50,7 +50,7 @@ Let the compiler infer the type of a constant or variable whenever possible.
 
 #### Good: no left-hand-side type annotations
 
-``` Swift
+``` swift
 let horizontalMargin = 10
 
 let font = NSFont.systemFont(ofSize: 15.0)
@@ -58,7 +58,7 @@ let font = NSFont.systemFont(ofSize: 15.0)
 
 #### Bad: with unnecessary left-hand-side type annotations
 
-``` Swift
+``` swift
 let horizontalMargin: Int = 10
 
 let font: NSFont = NSFont.systemFont(ofSize: 15.0)
@@ -72,7 +72,7 @@ Use type annotations instead of type inference for properties for API clarity.
 
 #### Good: property use type annotations 
 
-``` Swift
+``` swift
 class CustomLabel {
     let textColor: UIColor = .white
 }
@@ -80,7 +80,7 @@ class CustomLabel {
 
 #### Bad: property does not use type annotations 
 
-``` Swift
+``` swift
 class CustomLabel {
     let textColor = UIColor.white
 }
