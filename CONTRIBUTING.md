@@ -50,3 +50,25 @@ Examples should be written in valid Swift snippets and not written in pseudo-cod
 ## Updating table of contents
 
 There should be no links to empty pages from either the [README.md](README.md) file or the category table of content pages. Empty pages may exist in the repository as long as no active page links to it. When adding a new convention, the contributor is responsible for adding links in the category table of contents as well as to [README.md](README.md).
+
+
+## Test changes in GitHub Pages locally with Jekyll
+
+### Prerequisites
+Local testing with Jekyll requires `Ruby 2.5+` and `Bundler`; please refer to [Testing Your Github Pages site locally with Jekyll](https://help.github.com/en/github/working-with-github-pages/testing-your-github-pages-site-locally-with-jekyll) for more details on the installation.
+
+### Test steps
+
+* cd into the repository
+
+    `$ cd /path/to/swift-guide/`
+
+* Install the required `gems`
+
+    `$ bundle install`
+
+* Run the server
+
+    `$ bundle exec jekyll serve`
+
+* Open a browser of your choice and visit the locally served website at `http://localhost:4000`
