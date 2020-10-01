@@ -61,7 +61,7 @@ Local testing with Jekyll requires `Ruby 2.5+` and `Bundler`; please refer to [T
 
 * cd into the repository
 
-    `$ cd /path/to/swift-guide/GemConfigs`
+    `$ cd /path/to/swift-guide`
 
 * Install the required `gems`
 
