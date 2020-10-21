@@ -15,6 +15,7 @@ The Swift coding conventions guide documents many best practices for writing Swi
 * [Naming](Naming.md)
 * [Property Observers](PropertyObservers.md)
 * [Type Inference](TypeInference.md)
+* [Formatting](Formatting.md)
 
 # Legal Notices
 
