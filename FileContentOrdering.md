@@ -40,7 +40,7 @@ public class House {
 
 }
 
-// fileprivate extensions or constants
-fileprivate maximumHouseSize: Int = 50
+// private extensions or constants
+private maximumHouseSize: Int = 50
 ```
 
