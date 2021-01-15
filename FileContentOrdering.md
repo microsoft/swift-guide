@@ -16,7 +16,7 @@ public class House {
 
     // public functions
     public init {
-    ...
+    // ...
     }
 
     // public variables
@@ -24,15 +24,23 @@ public class House {
 
     // internal functions
     internal func addHouseMember() {
-    ...
+    // ...
     }
 
     // internal variables
     internal let sigil: Animal
 
+    // fileprivate functions
+    fileprivate func updateHouseAllegiance() {
+    // ...
+    }
+
+    // fileprivate variables
+    private var hasAllies: Bool
+
     // private functions
     private func reorganizeHouse() {
-    ...
+    // ...
     }
 
     // private variables
