@@ -16,7 +16,7 @@ public class House {
 
     // public functions
     public init {
-    ...
+    // ...
     }
 
     // public variables
@@ -24,20 +24,38 @@ public class House {
 
     // internal functions
     internal func addHouseMember() {
-    ...
+    // ...
     }
 
     // internal variables
     internal let sigil: Animal
 
+    // fileprivate functions
+    fileprivate func updateHouseAllegiance() {
+    // ...
+    }
+
+    // fileprivate variables
+    fileprivate var hasAllies: Bool
+
     // private functions
     private func reorganizeHouse() {
-    ...
+    // ...
     }
 
     // private variables
     private var size: Int = 0
 
+}
+
+// internal functions
+internal func updateUnalliedHouses(_ houses: [House]) {
+    houses.forEach { house in
+        // since this top-level function is in the same file, it can access fileprivate funcs and vars
+        if !house.hasAllies {
+            house.updateHouseAllegiance()
+        }
+    }
 }
 
 // private extensions or constants
