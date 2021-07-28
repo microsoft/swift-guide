@@ -12,14 +12,13 @@ Correct grammar and punctuation helps the documentation maintain clarity.
 All public declarations in your code base, such as classes, enums, functions, properties should have documentation. The outline of the documentation can be inserted in Xcode by pressing `CMD` + `Option` + `/` when the cursor is immediately above a method, class, etc or by selecting Xcode menu bar -> Editor -> Structure -> Add Documentation.
 
 ## Rationale
-Clear documentaiton promotes better understanding of the source code. In addition, Documentation automatically shows up in Xcode code completion and Quick Help to help with precise usage.
+Clear documentation promotes others' better understanding of the source code and facilitates reviews and usages. In addition, Documentation automatically shows up in Xcode code completion and Quick Help to help with precise usage.
 
 ## Examples
 
-### Bad: Description of the enum is not informational; there is no documentation on the enum cases
+### Bad: Insufficient enum description; there is no documentation on the enum cases
 
 ``` swift
-/// Shimmer style can be either concealing or revealing
 public enum ShimmerStyle {
     case concealing
     case revealing
@@ -30,13 +29,12 @@ public enum ShimmerStyle {
 ### Good: clear documentation that explains the different enum cases
 
 ``` swift
-/// Shimmer style can be either concealing or revealing
 /// The style affects how shimmer is animated 
 public enum ShimmerStyle {
-    /// Concealing shimmer: the gradient conceals parts of the subviews as it moves leaving most parts of the subviews unblocked.
+    /// The gradient conceals parts of the subviews as it moves leaving most parts of the subviews unblocked.
     case concealing
 
-    /// Revealing shimmer: the gradient reveals parts of the subviews as it moves leaving most parts of the subview blocked.
+    /// The gradient reveals parts of the subviews as it moves leaving most parts of the subview blocked.
     case revealing
 }
 ```
@@ -55,7 +53,7 @@ Adding inline comments brings clarity and readability to complex code and logic.
 ### Bad: does not explain why the the expand() function is called under a specific condition
 
 ``` swift
-class SomeView {
+class SomeView: UIView {
     ...
     override func mouseEntered(with event: NSEvent) {
         if !animationPlaying {
@@ -92,7 +90,6 @@ class SomeView {
 
 ``` swift
 let finalScore = scores.reduce(0, combine: +) / Double(scores.count)
-}
 ```
 
 ### Good: explain in an easily understandable way how finalScore is calculated
@@ -100,7 +97,6 @@ let finalScore = scores.reduce(0, combine: +) / Double(scores.count)
 ``` swift
 // Compute the final score as the arithmetic mean of the previous scores
 let finalScore = scores.reduce(0, combine: +) / Double(scores.count)
-}
 ```
 
 ### Bad: one big chunk of code
@@ -127,7 +123,6 @@ func loadLastCheckpoint() -> GameState? {
 ``` swift
 func loadLastCheckpoint() -> GameState? {
     // Determine the path to the file on disk
-    let defaultDataPath = getDefaultDataPath()
     guard let saveFilePath = defaultDataPath.appendingPathComponent("SaveFile.dat") else {
         return nil
     }
@@ -137,11 +132,12 @@ func loadLastCheckpoint() -> GameState? {
         return nil
     }
 
-    // Deserialize, reset to checkpoint and return
+    // Deserialize
     guard let loadedState = GameState.deserialize(dataContents) else {
         return nil
     }
 
+    // Reset to checkpoint and return
     loadedState.resetToLastCheckpoint()
     return loadedState
 }
