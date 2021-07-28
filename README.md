@@ -8,13 +8,13 @@ The Swift coding conventions guide documents many best practices for writing Swi
 
 # Table of Contents
 
-* [Comments](Comments.md)
 * [Delegates](Delegates.md)
 * [Early Return](EarlyReturn.md)
 * [File Content Ordering](FileContentOrdering.md)
 * [Immutability](Immutability.md)
 * [Naming](Naming.md)
 * [Property Observers](PropertyObservers.md)
+* [Type Casting](TypeCasting.md)
 * [Type Inference](TypeInference.md)
 
 # Legal Notices
