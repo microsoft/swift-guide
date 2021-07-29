@@ -50,39 +50,21 @@ Adding inline comments brings clarity and readability to complex code and logic.
 
 ## Examples
 
-### Bad: does not explain why the the expand() function is called under a specific condition
+### Bad: does not explain why the property someEventBridge is a weak reference.
 
 ``` swift
-class SomeView: UIView {
-    ...
-    override func mouseEntered(with event: NSEvent) {
-        if !animationPlaying {
-            expand()
-        }
-    }
-
-    func expand() {
-        ...
-    }
+class SomeView: NSView {
+    private weak var someEventBridge: EventBridge?
 }
 ```
 
-### Good: explains why the expand() function is called under a specific condition
+### Good: explains why the property someEventBridge is a weak reference.
 
 ``` swift
-class SomeView {
-    ...
-    override func mouseEntered(with event: NSEvent) {
-        // There are multiple mouse enter events fired during the expand/collapse animation because the tracking area is constantly changing. Only respond to the initial event.
-        // Only respond to the events when animation is not playing
-        if !animationPlaying {
-            expand()
-        }
-    }
-
-    func expand() {
-        ...
-    }
+class SomeView: NSView {
+    // Using weak here because lifetimes of SomeView and someEventBridge
+    // are not related. It is possible that someEventBridge outlives SomeView.
+    private weak var someEventBridge: EventBridge?
 }
 ```
 
