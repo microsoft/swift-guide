@@ -37,6 +37,3 @@ case 0:
 }
 
 ```
-
-## Convention - Runtime casting
-Follow the guidelines in [Downcasting](https://docs.swift.org/swift-book/LanguageGuide/TypeCasting.html#ID341)
