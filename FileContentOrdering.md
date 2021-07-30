@@ -62,3 +62,47 @@ internal func updateUnalliedHouses(_ houses: [House]) {
 private maximumHouseSize: Int = 50
 ```
 
+## Convention - Constants
+
+Use nested structs to group constants when possible.
+
+## Rationale
+
+This reduces verbosity and provides structure.
+
+## Example
+
+```swift
+class FruitSellerView: UIView {
+    ...
+
+    // bad: no separation between rotation and fade animation constants, long constant names are harder to read
+
+    static let rotationAnimationangle: CGFloat = .pi / 45.0
+    static let rotationAnimationdelay: CGFloat = 0.15
+    static let rotationAnimationduration: CGFloat = 0.3
+    static let rotationAnimationspeed: CGFloat = 100
+    static let fadeAnimationdelay: CGFloat = 0.1
+    static let fadeAnimationduration: CGFloat = 0.25
+    static let fadeAnimationspeed: CGFloat = 200
+}
+
+class FruitSellerView: UIView {
+    ...
+
+    // good: split rotation and fade animation constants into different groups
+
+    private struct RotationAnimationConstants {
+        static let angle: CGFloat = .pi / 45.0
+        static let delay: CGFloat = 0.15
+        static let duration: CGFloat = 0.3
+        static let speed: CGFloat = 100
+    }
+
+    private struct FadeAnimationConstants {
+        static let delay: CGFloat = 0.1
+        static let duration: CGFloat = 0.25
+        static let speed: CGFloat = 200
+    }
+}
+```
