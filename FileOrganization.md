@@ -1,4 +1,4 @@
-# File Content Ordering
+# File Organization
 
 ## Convention - Ordering
 
@@ -64,7 +64,7 @@ private maximumHouseSize: Int = 50
 
 ## Convention - Grouping
 Use `// MARK: Some text comment` to group related methods into sections. For example, in a view controller class, there might be `Setup`, `Layout`, and `Event Handlers` sections. 
-When marking a section of methods belonging to a superclass or a protocol, use the actual name of the superclass or protocol type instead of a loose translation. If there are multiple protocols, methods should be grouped by individual protocols.
+When marking a section of methods belonging to a superclass or a protocol, use the actual name of the superclass or protocol type instead of a loose translation. If there are multiple protocols, methods should be grouped by individual protocols. Note: this convention only applies to protocol adoption without extensions because the keyword `extension` will automatically put the protocol section in its own group.
 
 ## Rationale
 Grouping related methods into sections help with code organization and navigation.
