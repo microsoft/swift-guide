@@ -115,3 +115,57 @@ public func tableView(_ tableView: UITableView, numberOfRowsInSection section: I
 	...
 }
 ```
+
+## Convention - Constants
+
+Use structs or nested structs to group constants when possible; the grouping should be based on logical use instead of structure or type of the constants.
+
+## Rationale
+
+This reduces verbosity and provides structure.
+
+## Example
+
+```swift
+class FruitSellerView: UIView {
+    ...
+
+    // bad: no separation between rotation and fade animation constants, long constant names are harder to read
+    private struct Constants {
+        static let rotationAnimationAngle: CGFloat = .pi / 45.0
+        static let rotationAnimationDelay: CGFloat = 0.15
+        static let rotationAnimationDuration: CGFloat = 0.3
+        static let rotationAnimationSpeed: CGFloat = 100
+        static let fadeAnimationDelay: CGFloat = 0.1
+        static let fadeAnimationDuration: CGFloat = 0.25
+        static let fadeAnimationSpeed: CGFloat = 200
+    }
+
+    // bad: the name "Strings" does not provide helpful about how the constants are used.
+    private struct Strings {
+        static let rotationAnimationIdentifier: String = "FruitSellerViewRotationAnimationIdentifier"
+        static let fadeAnimationIdentifier: String = "FruitSellerViewFadeAnimationIdentifier"
+    }
+}
+
+class FruitSellerView: UIView {
+    ...
+
+    // good: split rotation and fade animation constants into different groups
+
+    private struct RotationAnimationConstants {
+        static let angle: CGFloat = .pi / 45.0
+        static let delay: CGFloat = 0.15
+        static let duration: CGFloat = 0.3
+        static let speed: CGFloat = 100
+        static let identifier: String = "FruitSellerViewRotationAnimationIdentifier"
+    }
+
+    private struct FadeAnimationConstants {
+        static let delay: CGFloat = 0.1
+        static let duration: CGFloat = 0.25
+        static let speed: CGFloat = 200
+        static let identifier: String = "FruitSellerViewFadeAnimationIdentifier"
+    }
+}
+```
