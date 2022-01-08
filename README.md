@@ -15,6 +15,7 @@ The Swift coding conventions guide documents many best practices for writing Swi
 * [Immutability](Immutability.md)
 * [Naming](Naming.md)
 * [Property Observers](PropertyObservers.md)
+* [Range Operators](RangeOperators.md)
 * [Type Casting](TypeCasting.md)
 * [Type Inference](TypeInference.md)
 
