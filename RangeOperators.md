@@ -26,7 +26,7 @@ for i in 0...count {
 //five
 //Fatal error: Index is out of range
 
-// bad:
+// bad: Additional arithemtic makes the end value less clear
 for i in 0...count-1 {
     print(oneToFive[i])
 }
@@ -36,7 +36,7 @@ for i in 0...count-1 {
 //four
 //five
 
-// good:
+// good: Clearly shows that loop will end just before `count`
 for i in 0..<count {
     print(oneToFive[i])
 }
@@ -46,7 +46,7 @@ for i in 0..<count {
 //four
 //five
 
-// good: One-Sided Ranges can also be used
+// good: One-Sided Ranges can also be used to show the range is from the start to just before `count`
 for number in oneToFive[..<count] {
     print(number)
 }
@@ -55,26 +55,6 @@ for number in oneToFive[..<count] {
 //three
 //four
 //five
-
-// fine:
-for i in 1...5 {
-    print(i)
-}
-//1
-//2
-//3
-//4
-//5
-```
-
-### Repeated Actions
-```swift
-// bad:
-let tenRandomNumbers: [Float] = (1...10).map {_ in Float.random(in: 0..<1)}
-
-// good:
-let tenRandomNumbers: [Float] = (0..<10).map {_ in Float.random(in: 0..<1)}
-```
 
 ## Resources
 [Range Operators](https://docs.swift.org/swift-book/LanguageGuide/BasicOperators.html#ID73)
