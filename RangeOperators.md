@@ -46,15 +46,5 @@ for i in 0..<count {
 //four
 //five
 
-// good: One-Sided Ranges can also be used to show the range is from the start to just before `count`
-for number in oneToFive[..<count] {
-    print(number)
-}
-//one
-//two
-//three
-//four
-//five
-
 ## Resources
 [Range Operators](https://docs.swift.org/swift-book/LanguageGuide/BasicOperators.html#ID73)
