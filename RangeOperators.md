@@ -6,7 +6,7 @@ Prefer the half-open range operator `(a..<b)` over the closed range operator `(a
 
 ## Rationale
 
-Much like using `<` instead of `<=`, using the half-open range operator allows you to exclude the final value without the need of additional arithmetic. That being said, if you intend to use the final, the closed range operator is still suitable.
+Much like using `<` instead of `<=`, using the half-open range operator allows you to exclude the final value without the need of additional arithmetic. That being said, if you intend to use the final value, the closed range operator is still suitable.
 
 ## Examples
 
