@@ -17,34 +17,34 @@ let count = oneToFive.count
 
 // really bad: off by one
 for i in 0...count {
-    print(oneToFive[i])
+    print("\(i+1) is \(oneToFive[i])")
 }
-//one
-//two
-//three
-//four
-//five
+//1 is one
+//2 is two
+//3 is three
+//4 is four
+//5 is five
 //Fatal error: Index is out of range
 
 // bad: Additional arithemtic makes the end value less clear
 for i in 0...count-1 {
-    print(oneToFive[i])
+    print("\(i+1) is \(oneToFive[i])")
 }
-//one
-//two
-//three
-//four
-//five
+//1 is one
+//2 is two
+//3 is three
+//4 is four
+//5 is five
 
 // good: Clearly shows that loop will end just before `count`
 for i in 0..<count {
-    print(oneToFive[i])
+    print("\(i+1) is \(oneToFive[i])")
 }
-//one
-//two
-//three
-//four
-//five
+//1 is one
+//2 is two
+//3 is three
+//4 is four
+//5 is five
 
 ## Resources
 [Range Operators](https://docs.swift.org/swift-book/LanguageGuide/BasicOperators.html#ID73)
