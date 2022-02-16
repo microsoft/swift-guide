@@ -85,3 +85,27 @@ class CustomLabel {
     let textColor = UIColor.white
 }
 ```
+
+## Casting
+
+### The `as` keyword
+
+There are 3 forms of the `as` keyword:
+
+- `as`: static typecast
+- `as?`: runtime, conditional typecast
+- `as!`: runtime, forced typecast
+
+The first form, `as`, should only be used as a sub-expression within a larger expression, such as
+```swift
+let baseFilename = (fullPath as NSString).stringByDeletingPathExtension
+```
+
+It should not be used in a simple expression such as:
+```swift
+let padding = 42 as CGFloat
+```
+
+Instead, the constant on the left-hand side should be declared to be of `CGFloat` type
+```swift
+let padding: CGFloat = 42
