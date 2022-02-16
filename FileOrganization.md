@@ -1,5 +1,41 @@
 # File Organization
 
+## MARK Comments
+
+The special `// MARK: Some text` comment should be used to group related methods into sections (`#pragma mark` in objc).
+
+
+<img width="529" alt="Example of using the MARK syntax in comments to split the navigator into sections" src="https://user-images.githubusercontent.com/1363082/154284314-33610b82-62c0-4840-a037-7eba8b8a3269.png">
+
+This menu can be revealed either by tapping the name of the current method in the "jump bar" at the top of your source editor or by pressing `^6` (you can rebind this to something more convenient). One great feature of this method list is that you can type to fuzzy filter the list and press `[Return]` to jump to the selected method.
+
+You may also use `// MARK: - Some text` to insert a dividing line (such as you can see for "Notifications" and "UIScrollViewDelegate")
+
+Xcode is flexible with whitespace here, but our rules are:
+
+1. There should be a single space between `//` and `MARK`
+2. There should be no space between `MARK` and `:`
+
+3. There should be a single space after the `:`
+4. If using a line, it should be after the space from point #3 and should have a space afterwards if using text as well
+
+Please attempt to follow these recommendations when marking groups of methods:
+
+1. When marking a section *within* a type declaration or extension, use `// MARK: Some label` (no hyphen). If the section is *outside* a type declaration, use `// MARK: - Some label` (with a hypen).
+2. When separating the methods within a `UIViewController`, attempt to use these standardized section names:
+    - "Init" (grouping together `init()` and `deinit()`, if any)
+    - "Setup"
+    - "Layout"
+    - "Notifications" and "Actions" (event handlers)
+    - "Helpers"
+3. When marking a section of methods belonging to a superclass or a protocol, use the actual name of the superclass or protocol type instead of a loose translation
+    - :white_check_mark: `// MARK: - UITableViewDelegate`
+    - :x: `// MARK: - Table view delegate`
+4. In some cases it may make more sense for a method to be moved to a functional section instead of just being grouped based on class hierarchy
+    - for instance, `becomeFirstResponder` should belong to a `UIResponder` mark section
+    - `sizeThatFits:` should probably belong to a `Layout` section rather than `UIView` since the functionality trumps where it was inherited from
+
+
 ## Convention - Ordering
 
 Most "important" stuff at the top; and least "important" stuff at the bottom. The importance is usually determined by the [access level](https://docs.swift.org/swift-book/LanguageGuide/AccessControl.html); the less restrictive the access level, the more "important" it is.
