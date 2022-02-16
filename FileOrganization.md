@@ -131,7 +131,7 @@ class FruitSellerView: UIView {
     ...
 
     // bad: no separation between rotation and fade animation constants, long constant names are harder to read
-    private struct Constants {
+    private enum Constants {
         static let rotationAnimationAngle: CGFloat = .pi / 45.0
         static let rotationAnimationDelay: CGFloat = 0.15
         static let rotationAnimationDuration: CGFloat = 0.3
@@ -142,7 +142,7 @@ class FruitSellerView: UIView {
     }
 
     // bad: the name "Strings" does not provide helpful about how the constants are used.
-    private struct Strings {
+    private enum Strings {
         static let rotationAnimationIdentifier: String = "FruitSellerViewRotationAnimationIdentifier"
         static let fadeAnimationIdentifier: String = "FruitSellerViewFadeAnimationIdentifier"
     }
@@ -153,7 +153,7 @@ class FruitSellerView: UIView {
 
     // good: split rotation and fade animation constants into different groups
 
-    private struct RotationAnimationConstants {
+    private enum RotationAnimationConstants {
         static let angle: CGFloat = .pi / 45.0
         static let delay: CGFloat = 0.15
         static let duration: CGFloat = 0.3
@@ -161,7 +161,7 @@ class FruitSellerView: UIView {
         static let identifier: String = "FruitSellerViewRotationAnimationIdentifier"
     }
 
-    private struct FadeAnimationConstants {
+    private enum FadeAnimationConstants {
         static let delay: CGFloat = 0.1
         static let duration: CGFloat = 0.25
         static let speed: CGFloat = 200
@@ -169,3 +169,5 @@ class FruitSellerView: UIView {
     }
 }
 ```
+
+Note: We use `enum` rather than `struct` as it can help reduce potential confusion. Running `let x = RotatationAnimationConstants()` would be valid code if we were to use a `struct`, for an `enum` it will throw an error. 
