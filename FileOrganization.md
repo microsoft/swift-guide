@@ -1,6 +1,6 @@
 # File Organization
 
-## MARK Comments
+## Convention - MARK Comments
 
 The special `// MARK: Some text` comment should be used to group related methods into sections (`#pragma mark` in objc).
 
@@ -14,7 +14,6 @@ Xcode is flexible with whitespace here, but our rules are:
 
 1. There should be a single space between `//` and `MARK`
 2. There should be no space between `MARK` and `:`
-
 3. There should be a single space after the `:`
 4. If using a line, it should be after the space from point #3 and should have a space afterwards if using text as well
 
@@ -34,8 +33,11 @@ Please attempt to follow these recommendations when marking groups of methods:
     - for instance, `becomeFirstResponder` should belong to a `UIResponder` mark section
     - `sizeThatFits:` should probably belong to a `Layout` section rather than `UIView` since the functionality trumps where it was inherited from
 
+## Rationale
 
-### Example
+Having a consistent mechanism for grouping allows everyone on the team to nagivate the codebase with much greater ease and efficiency. Knowing how files for commong view controllers, for example, are laid out makes working on them much faster and simpler.
+
+## Example
 
 ``` swift
 
