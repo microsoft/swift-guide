@@ -11,6 +11,7 @@ Much like using `<` instead of `<=`, using the half-open range operator allows y
 ## Examples
 
 ### Array Iteration
+
 ```swift
 let oneToFive = ["one", "two", "three", "four", "five"]
 let count = oneToFive.count
@@ -45,6 +46,7 @@ for i in 0..<count {
 //3 is three
 //4 is four
 //5 is five
+```
 
 ## Resources
 [Range Operators](https://docs.swift.org/swift-book/LanguageGuide/BasicOperators.html#ID73)
