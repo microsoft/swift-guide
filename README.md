@@ -16,6 +16,7 @@ The Swift coding conventions guide documents many best practices for writing Swi
 * [Naming](Naming.md)
 * [Property Observers](PropertyObservers.md)
 * [Range Operators](RangeOperators.md)
+* [Singletons](Singletons.md)
 * [Type Casting](TypeCasting.md)
 * [Type Inference](TypeInference.md)
 
