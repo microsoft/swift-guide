@@ -8,6 +8,7 @@ The Swift coding conventions guide documents many best practices for writing Swi
 
 # Table of Contents
 
+* [Annotations and Modifiers](AnnotationsAndModifiers.md)
 * [Comments](Comments.md)
 * [Delegates](Delegates.md)
 * [Early Return](EarlyReturn.md)
