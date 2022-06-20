@@ -124,3 +124,65 @@ func loadLastCheckpoint() -> GameState? {
     return loadedState
 }
 ```
+
+## Convention: Single line and multi line comment types
+
+Single line and multi line comments in Swift can be written in a couple of different forms, some of which enable additional features such as markdown to provide richer documentation.
+
+## Rationale
+
+- Single line comments can be written using two slashes, `//`, or using three slashes, `///`. `///` comments behave the same as `//` comments except that they enable the use of markdown and allow Xcode to create Quick Help documentation for the code. For these reasons, prefer the use of `///` comments over `//` comments when documenting public properties or methods.
+- Multi line comments can be written using `/* */` or `/** */`. `/** */` comments behave the same as `/* */` except that they enable the use of markdown and allow Xcode to create Quick Help documentation for the code. For these reasons, prefer the use of `/** */` comments over `/* */` comments when documenting public properties or methods.
+
+## Examples
+
+### Bad: single line comment without markdown used for public property description
+
+``` swift
+class SomeToolbar: UIView {
+    // Array holding UIViews shown inside toolbar
+    public var toolbarItems: [UIView]?
+}
+```
+
+### Good: single line comment with markdown used for public property description
+
+``` swift
+class SomeToolbar: UIView {
+    /// Array holding `UIView`s shown inside toolbar
+    public var toolbarItems: [UIView]?
+}
+```
+
+### Bad: multi-line comment without markdown used for public method description
+
+``` swift
+class SomeToolbar: UIView {
+    /*
+     Hides the toolbar view.
+    
+     @param animated: When true, the view will hide with animation
+     @param completion: Block called after the view is finished hiding
+    */
+    public func hideToolbar(_ animated: Bool, completion: ((Bool) -> Void)?) {
+        setHidden(true, animated: animated, completion: completion)
+    }
+}
+```
+
+### Good: multi-line comment with markdown used for public method description
+
+``` swift
+class SomeToolbar: UIView {
+    /**
+     Hides the toolbar view.
+
+     - Parameters:
+        - animated: When true, the view will hide with animation
+        - completion: Block called after the view is finished hiding
+    */
+    public func hideToolbar(_ animated: Bool, completion: ((Bool) -> Void)?) {
+        setHidden(true, animated: animated, completion: completion)
+    }
+}
+```
