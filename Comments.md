@@ -127,11 +127,11 @@ func loadLastCheckpoint() -> GameState? {
 
 ## Convention: Single line and multi line comment types
 
-Single line and multi line comments in Swift can be written in many of different forms, some of which enable additional features such as markdown to provide richer documentation.
+Single line and multi line comments in Swift can be written in a few different forms, some of which enable additional features such as markdown to provide richer documentation.
 
 ## Rationale
 
-The triple slash style comment, `///`, is preferred for both single line and multi line comments as it allows for the use of markdown inside comments, provides automcomplete documentation, and is the default for Xcode's docmentation generation.
+The triple slash style comment, `///`, is preferred for both single line and multi line comments as it allows for the use of markdown inside comments, provides automcomplete and quick help documentation, and is the default for Xcode's docmentation generation. Additional details about the different comment styles can be found in the [official documentation](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/index.html#//apple_ref/doc/uid/TP40016497-CH2-SW1).
 
 ## Examples
 
