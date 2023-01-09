@@ -4,66 +4,81 @@ In general, follow the concurrency section in the [official guidelines](https://
 
 ## Convention
 
-Use a task to manage synchronous access to a property populated by an an asynchronous function within an Actor. For more in-depth discussions, watch [WWDC21 - Protect mutable state with Swift actors](https://developer.apple.com/wwdc21/10133).
+Use a task to manage synchronous access to a property populated by an an asynchronous function within an Actor. For more in-depth discussions of the provided example, watch [WWDC21 - Protect mutable state with Swift actors](https://developer.apple.com/wwdc21/10133).
 
 ## Rationale
-Even though Actors are helpful for sharing information between concurrent code, asynchronous functions in Actors does not guarantee the state of Actor properties after an asynchronous call.
+Even though Actors are helpful for sharing information between concurrent code, asynchronous functions in Actors do not guarantee the state of Actor properties after an asynchronous call.
 
 ## Examples
 
-### Bad: when calling the function retrieveURL() across different threads, it's possible that multiple downloads are executed which is inefficient and unnecessary. If the download function always downloads to the same directory, the returned URL might point to an invalid file because another thread has overwritten the url with partially downloaded contents.
+### Bad: when calling the function image(from:url:) across different threads, it's possible that multiple downloads are executed which is inefficient and unnecessary. If the download function always downloads to the same file path, the file path might contain partially downloaded contents.
 
 ``` swift
-actor BuildToolExecutable {
+actor ImageDownloader {
 
-	func retrieveURL() async throws -> URL {
-		if cachedURL == nil {
-			// When the following line executes, the function does not continue executing until
-			// the download finishes. During this time, a different thread could call the function
-			// and download the same executable again.
-			let url = try await downloadExecutable()
-			cachedURL = url
+	func image(from url: URL) async throws -> UIImage {
+		if let cached = cache[url] {
+			return cached
 		}
 
-		return cachedURL
+		// When the following line executes, the function does not continue executing until
+		// the download finishes. During this time, a different thread could call the function
+		// and download the same image again.
+		let imageFilePath = try await downloadImage(from: url)
+
+		// The image file might not contain the full downloaded contents.
+		let image = UIImage(contentsOfFile: imageFilePath)
+
+		cache[url] = image
+		return image!
 	}
 
-	private var cachedURL: URL? = nil
+	private var cache: [URL: UIImage] = [:]
 }
 
 ```
 
-### Good: Initialize the cache with a task that downloads the executable asynchronously. Subsequent requests of URL() function will wait for the asynchronous task to finish if queued before the cache is populated or use the cached value after the task finishes.
+### Good: Use a task that downloads the executable asynchronously. Subsequent requests of the same image will wait for the asynchronous task to finish if queued before the cache is populated or use the cached value after the task finishes.
 
 ``` swift
-actor BuildToolExecutable {
+actor ImageDownloader {
 
-	/// Checks the cache for the url of the executable
-	/// - Returns: the cached url if available, or wait for the url retrieval task to finish and return the result of the task
-	func URL() async throws -> URL {
-		switch cache {
-		case let .ready(url):
-			return url
-		case let .inProgress(urlRetrievalTask):
-			let url = try await urlRetrievalTask.value
-			cache = .ready(url)
-			return url
-		}
-	}
+	/// Checks the cache for the image corresponding to the url
+	/// - Returns: the cached image if available, or wait for the task to finish and return the result of the task
+	func image(from url: URL) async throws -> UIImage {
+		if let cached = cache[url] {
+				switch cached {
+				case .ready(let image):
+					 return image
+				case .inProgress(let task):
+					 return try await task.value
+				}
+		  }
+
+		  let task = Task {
+				let imageFilePath = try await downloadImage(from: url)
+				return UIImage(contentsOfFile: imageFilePath)!
+		  }
+
+		  cache[url] = .inProgress(task)
+
+		  do {
+				let image = try await task.value
+				cache[url] = .ready(image)
+				return image
+		  } catch {
+				cache[url] = nil
+				throw error
+		  }
 	
 }
 
-	private func retrieveURL() async throws -> URL {
-		return = try await downloadExecutable()
-	}
-
-	private var cache: CacheEntry = .inProgress(Task { try await retrieveURL() })
+	private var cache: [URL: CacheEntry] = [:]
 
 	private enum CacheEntry {
-		case inProgress(Task<URL, Error>)
-		case ready(URL)
+		case inProgress(Task<UIImage, Error>)
+		case ready(UIImage)
 	}
 }
-
 
 ```
