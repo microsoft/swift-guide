@@ -10,6 +10,7 @@ The Swift coding conventions guide documents many best practices for writing Swi
 
 * [Annotations and Modifiers](AnnotationsAndModifiers.md)
 * [Comments](Comments.md)
+* [Concurrency](Concurrency.md)
 * [Delegates](Delegates.md)
 * [Early Return](EarlyReturn.md)
 * [File Organization](FileOrganization.md)
