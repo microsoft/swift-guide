@@ -4,7 +4,7 @@ In general, follow the concurrency section in the [official guidelines](https://
 
 ## Convention
 
-Use a task to manage synchronous access to a property populated by an an asynchronous function within an Actor. For more in-depth discussions of the provided example, watch [WWDC21 - Protect mutable state with Swift actors](https://developer.apple.com/wwdc21/10133).
+Use a task to manage synchronous access to a property populated by an asynchronous function within an Actor. For more in-depth discussions of the provided example, watch [WWDC21 - Protect mutable state with Swift actors](https://developer.apple.com/wwdc21/10133).
 
 ## Rationale
 Even though Actors are helpful for sharing information between concurrent code, asynchronous functions in Actors do not guarantee the state of Actor properties after an asynchronous call.
